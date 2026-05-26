@@ -260,3 +260,28 @@ html, body {
   transition: opacity 0.3s;
 }
 #notification.show { opacity: 1; }
+
+/* ── Help Panel ── */
+#hud-help {
+  background: rgba(0,0,0,0.4);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: 4px;
+}
+.help-row {
+  color: var(--text-dim);
+  font-size: 10px;
+}
+.help-row b { color: var(--text); }
+
+/* ── Tool divider ── */
+.tool-divider {
+  width: 24px;
+  height: 1px;
+  background: var(--border);
+  margin: 2px auto;
+}
