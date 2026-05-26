@@ -8,56 +8,59 @@
 </head>
 <body>
 
-  <!-- HUD Overlay -->
+  <!-- HUD -->
   <div id="hud">
-    <div id="hud-logo">AETHER_STUDIO</div>
+    <div id="hud-logo">AETHER_STUDIO <span style="font-size:9px;opacity:0.5">v0.2</span></div>
     <div id="hud-status">
       <span id="status-tracking" class="status-dot offline"></span>
-      <span id="status-label">TRACKING OFFLINE</span>
+      <span id="status-label">MOUSE MODE</span>
     </div>
     <div id="hud-coords">
-      <div class="coord-row"><span class="axis x">X</span> <span id="coord-x">---</span></div>
-      <div class="coord-row"><span class="axis y">Y</span> <span id="coord-y">---</span></div>
-      <div class="coord-row"><span class="axis z">Z</span> <span id="coord-z">---</span></div>
+      <div class="coord-row"><span class="axis x">X</span> <span id="coord-x">0.0mm</span></div>
+      <div class="coord-row"><span class="axis y">Y</span> <span id="coord-y">0.0mm</span></div>
+      <div class="coord-row"><span class="axis z">Z</span> <span id="coord-z">0.0mm</span></div>
     </div>
-    <div id="hud-gesture">
-      <span id="gesture-label">GESTURE: IDLE</span>
-    </div>
-    <div id="hud-snap">
-      <span id="snap-label">SNAP: OFF</span>
+    <div id="hud-gesture"><span id="gesture-label">GESTURE: IDLE</span></div>
+    <div id="hud-snap"><span id="snap-label">SNAP: OFF</span></div>
+    <div id="hud-help">
+      <div class="help-row">✦ <b>SCULPT</b> drag to draw+extrude</div>
+      <div class="help-row">● <b>POINT</b> click to place</div>
+      <div class="help-row">■ <b>BOX</b> drag to size</div>
+      <div class="help-row">○ <b>CYLINDER</b> drag radius</div>
+      <div class="help-row" style="margin-top:6px;color:#4a6070">Right-click / Del = Undo</div>
+      <div class="help-row" style="color:#4a6070">Keys: 1-4 tools, S snap, E export</div>
     </div>
   </div>
 
   <!-- Toolbar -->
   <div id="toolbar">
-    <button class="tool-btn active" data-tool="sculpt" title="Sculpt Mode">✦</button>
-    <button class="tool-btn" data-tool="extrude" title="Extrude">⬆</button>
-    <button class="tool-btn" data-tool="measure" title="Measure">⌖</button>
-    <button class="tool-btn" data-tool="clear" title="Clear Scene">✕</button>
+    <button class="tool-btn active" data-tool="sculpt" title="Sculpt (1)">✦</button>
+    <button class="tool-btn" data-tool="point"    title="Point (2)">●</button>
+    <button class="tool-btn" data-tool="box"      title="Box (3)">■</button>
+    <button class="tool-btn" data-tool="cylinder" title="Cylinder (4)">○</button>
+    <div class="tool-divider"></div>
+    <button class="tool-btn" data-tool="undo"  title="Undo (Del)">↩</button>
+    <button class="tool-btn" data-tool="clear" title="Clear scene">✕</button>
   </div>
 
-  <!-- Snap Grid Toggle -->
+  <!-- Bottom Controls -->
   <div id="controls-bottom">
-    <button id="btn-snap" class="ctrl-btn">SNAP OFF</button>
-    <button id="btn-grid" class="ctrl-btn active">GRID ON</button>
+    <button id="btn-snap"   class="ctrl-btn">SNAP OFF</button>
+    <button id="btn-grid"   class="ctrl-btn active">GRID ON</button>
     <button id="btn-camera" class="ctrl-btn">CAMERA</button>
     <button id="btn-export" class="ctrl-btn">EXPORT STL</button>
   </div>
 
-  <!-- Main 3D Canvas -->
+  <!-- 3D Canvas -->
   <canvas id="viewport"></canvas>
 
-  <!-- Webcam feed (optical telemetry) -->
+  <!-- Webcam -->
   <video id="webcam" autoplay playsinline muted></video>
   <canvas id="tracking-canvas"></canvas>
 
-  <!-- Gesture Visualizer -->
   <div id="gesture-ring" class="hidden"></div>
-
-  <!-- Notification -->
   <div id="notification"></div>
 
-  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/three@0.163.0/build/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.163.0/examples/js/controls/OrbitControls.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
